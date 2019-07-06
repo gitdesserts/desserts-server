@@ -5,6 +5,7 @@ import entities from './entity';
 import { User } from './entity/User';
 import user from './api/user';
 import question from './api/question';
+import result from './api/result';
 
 dotenv.config();
 
@@ -23,12 +24,16 @@ createConnection({
 }).then(async () => {
   const app: express.Application = express();
 
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
   app.get('/', (req, res) => {
     res.send('express');
   });
 
   app.use('/', user);
   app.use('/questions', question);
+  app.use('/results', result);
 
   //app.use('/dosc', swaggerDoc);
 

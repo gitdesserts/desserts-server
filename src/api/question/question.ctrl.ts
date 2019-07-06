@@ -1,7 +1,5 @@
 import { Response, Request } from 'express';
-import { Question } from '../../entity/Question';
-import { User } from '../../entity/User';
-import { getRepository, getConnection } from 'typeorm';
+import { getConnection } from 'typeorm';
 
 const POSITIVE = 1;
 const NEGATIVE = 2;
@@ -25,7 +23,5 @@ export const find = async (req: Request, res: Response) => {
   const negativeQuestions = await getQuestion(NEGATIVE, 2);
   const normalQuestions = await getQuestion(NOMAL, 1);
 
-  res.send({
-    questions: [...positiveQuestions, ...negativeQuestions, ...normalQuestions]
-  });
+  res.send([...positiveQuestions, ...negativeQuestions, ...normalQuestions]);
 };
