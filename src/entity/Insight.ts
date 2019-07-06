@@ -10,4 +10,7 @@ export class Insight {
 
   @Column()
   code: string;
+
+  @Column()
+  img: string;
 }

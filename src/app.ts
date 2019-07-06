@@ -5,6 +5,7 @@ import entities from './entity';
 import user from './api/user';
 import question from './api/question';
 import result from './api/result';
+import insight from './api/insight';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ createConnection({
   app.use('/', user);
   app.use('/questions', question);
   app.use('/results', result);
+  app.use('/insights', insight);
 
   //app.use('/dosc', swaggerDoc);
 
