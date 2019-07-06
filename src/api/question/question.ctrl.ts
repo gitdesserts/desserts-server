@@ -25,5 +25,7 @@ export const find = async (req: Request, res: Response) => {
   const negativeQuestions = await getQuestion(NEGATIVE, 2);
   const normalQuestions = await getQuestion(NOMAL, 1);
 
-  res.send([...positiveQuestions, ...negativeQuestions, ...normalQuestions]);
+  res.send({
+    questions: [...positiveQuestions, ...negativeQuestions, ...normalQuestions]
+  });
 };
