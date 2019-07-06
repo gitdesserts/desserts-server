@@ -134,18 +134,29 @@ requestQuery:
 responses:
   200:
     schema:
-      type: array
+      type: object
+      properties:
+        month: number
+        week: number
+        results: array
+          items:
+            type: number
+
 ```
 
 ```
 // example: GET /results/week?date=2019-07-06
-[
-    0,
-    0,
-    5,
-    4,
-    3,
-    2,
-    1
-]
+{
+    "month": "7",
+    "week": 1,
+    "result": [
+        0,
+        0,
+        5,
+        4,
+        3,
+        9,
+        1
+    ]
+}
 ```

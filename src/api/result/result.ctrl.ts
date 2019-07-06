@@ -32,6 +32,10 @@ export const findFromWeek = async (req: Request, res: Response) => {
     SELECT id, score, createAt, WEEKDAY(createAt) as day FROM result WHERE YEARWEEK('${date}', 1) = YEARWEEK(createAt, 1)
   `);
 
+  const { month, week } = (await getConnection().query(`
+    SELECT FLOOR((DATE_FORMAT('${date}','%d')+(date_format(date_format('${date}','%Y%m%01'),'%w')-1))/7)+1 week, month('${date}') month;
+  `))[0];
+
   rawResults.forEach(rawResult => {
     const index = parseInt(rawResult['day']);
     result[index] = rawResult['score'];
@@ -41,7 +45,7 @@ export const findFromWeek = async (req: Request, res: Response) => {
     if (!result[index]) result[index] = 0;
   }
 
-  res.send(result);
+  res.send({ month: parseInt(month), week, result });
 };
 
 export const findThisMonth = async (req: Request, res: Response) => {};
