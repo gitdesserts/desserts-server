@@ -1,6 +1,6 @@
 # desserts-server
 
-POST /session
+## POST /session
 
 ```
 summary: 임시 로그인 결과를 반환합니다.
@@ -19,7 +19,7 @@ responses:
 }
 ```
 
-GET /questions
+## GET /questions
 
 ```
 summary: 질문 리스트를 반환합니다.
@@ -66,7 +66,7 @@ responses:
 ]
 ```
 
-POST /results
+## POST /results
 
 ```
 summary: 질문의 결과를 생성합니다.
@@ -123,4 +123,29 @@ responses:
     "id": 1,
     "createAt": "2019-07-06T07:58:06.000Z"
 }
+```
+
+## GET /results/week
+
+```
+summary: 한 주의 점수를 가져옵니다.
+requestQuery:
+  date: string
+responses:
+  200:
+    schema:
+      type: array
+```
+
+```
+// example: GET /results/week?date=2019-07-06
+[
+    0,
+    0,
+    5,
+    4,
+    3,
+    2,
+    1
+]
 ```
