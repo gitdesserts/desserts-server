@@ -10,10 +10,13 @@ export const create = async (req: Request, res: Response) => {
     score += parseInt(result['score']);
   });
 
-  const result = await getRepository(Result).save({
-    creator: 1,
-    score
-  });
-
-  res.status(200).send({ result });
+  try {
+    const result = await getRepository(Result).save({
+      creator: 1,
+      score
+    });
+    res.status(200).send({ result });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
 };

@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 import * as express from 'express';
 import { createConnection } from 'typeorm';
 import entities from './entity';
-import { User } from './entity/User';
 import user from './api/user';
 import question from './api/question';
 import result from './api/result';

@@ -107,7 +107,14 @@ responses:
 ### requestBody
 
 ```
-
+{ results:
+  [ { id: 1, score: 1 },
+    { id: 2, score: 0 },
+    { id: 3, score: 1 },
+    { id: 4, score: -1 },
+    { id: 5, score: 1 }
+  ]
+}
 ```
 
 ### responses
