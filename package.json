@@ -1,19 +1,25 @@
 {
-  "name": "desserts-server",
-  "version": "1.0.0",
-  "main": "src/app.ts",
-  "license": "MIT",
-  "scripts": {
-    "dev": "nodemon --exec ts-node src/app.ts"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.0",
-    "@types/node": "^12.0.12",
-    "nodemon": "^1.19.1",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.2"
-  }
+   "name": "desserts-server",
+   "version": "1.0.0",
+   "main": "src/app.ts",
+   "license": "MIT",
+   "scripts": {
+      "dev": "nodemon --exec ts-node src/app.ts",
+      "start": "ts-node src/index.ts"
+   },
+   "dependencies": {
+      "dotenv": "^8.0.0",
+      "express": "^4.17.1",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.2.18"
+   },
+   "devDependencies": {
+      "@types/dotenv": "^6.1.1",
+      "@types/express": "^4.17.0",
+      "@types/node": "^12.0.12",
+      "nodemon": "^1.19.1",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   }
 }
