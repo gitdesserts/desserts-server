@@ -147,7 +147,7 @@ responses:
 ```
 // example: GET /results/week?date=2019-07-06
 {
-    "month": "7",
+    "month": 7,
     "week": 1,
     "result": [
         0,
@@ -157,6 +157,65 @@ responses:
         3,
         9,
         1
+    ]
+}
+```
+
+## GET /results/month
+
+```
+summary: 한 달 동안의 점수를 가져옵니다.
+requestQuery:
+  date: string
+responses:
+  200:
+    schema:
+      type: object
+      properties:
+        month: number
+        week: number
+        results: array
+          items:
+            type: number
+```
+
+```
+// example: GET /results/month?date=2019-07-06
+{
+    "month": 7,
+    "week": 1,
+    "result": [
+        -1,
+        -1,
+        5,
+        4,
+        3,
+        7,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
     ]
 }
 ```
