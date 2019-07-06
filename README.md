@@ -128,7 +128,7 @@ responses:
 ## GET /results/week
 
 ```
-summary: 한 주의 점수를 가져옵니다.
+summary: 한 주의 점수를 가져옵니다. 데이터가 없으면 -1을 표시합니다.
 requestQuery:
   date: string
 responses:
@@ -150,12 +150,12 @@ responses:
     "month": 7,
     "week": 1,
     "result": [
-        0,
-        0,
+        -1,
+        -1,
         5,
         4,
         3,
-        9,
+        7,
         1
     ]
 }
@@ -164,7 +164,7 @@ responses:
 ## GET /results/month
 
 ```
-summary: 한 달 동안의 점수를 가져옵니다.
+summary: 한 달 동안의 점수를 가져옵니다. 데이터가 없으면 -1을 표시합니다.
 requestQuery:
   date: string
 responses:

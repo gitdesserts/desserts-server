@@ -51,7 +51,7 @@ export const findFromWeek = async (req: Request, res: Response) => {
   });
 
   for (let index = 0; index < 7; index++) {
-    if (!result[index]) result[index] = 0;
+    if (!result[index]) result[index] = -1;
   }
 
   res.send({ month: parseInt(month), week, result });
