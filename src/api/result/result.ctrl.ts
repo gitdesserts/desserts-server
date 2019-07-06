@@ -4,7 +4,7 @@ import { Result } from '../../entity/Result';
 
 const getMonthAndWeek = async (date: string) =>
   (await getConnection().query(`
-    SELECT FLOOR((DATE_FORMAT('${date}','%d')+(date_format(date_format('${date}','%Y%m%01'),'%w')-1))/7)+1 week, month('${date}') month;
+    SELECT  weekofyear('${date}') - weekofyear(DATE_FORMAT('${date}' ,'%Y-%m-01')) + 1 week, month('${date}') month;
   `))[0];
 
 const getYearAndMonth = async (date: string) =>
@@ -51,7 +51,7 @@ export const findFromWeek = async (req: Request, res: Response) => {
   });
 
   for (let index = 0; index < 7; index++) {
-    if (!result[index]) result[index] = -1;
+    if (!result[index]) result[index] = 0;
   }
 
   res.send({ month: parseInt(month), week, result });
