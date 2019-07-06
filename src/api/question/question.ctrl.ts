@@ -14,7 +14,8 @@ const getQuestion = async (type: number, limit: number) =>
     FROM question, type
     WHERE question.type=type.id
       AND question.type=${type}
-    ORDER BY RAND() LIMIT ${limit};`
+      ${type === POSITIVE ? `AND content LIKE '%\\\\n%'` : ''}
+    ORDER BY RAND() LIMIT ${limit}`
   );
 
 export const find = async (req: Request, res: Response) => {

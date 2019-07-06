@@ -3,7 +3,7 @@ import { getRepository } from 'typeorm';
 import { Result } from '../../entity/Result';
 
 export const create = async (req: Request, res: Response) => {
-  const { results } = req.body;
+  const { results } = req.params;
   let score = 0;
 
   (results as Array<Object>).forEach(result => {
