@@ -219,3 +219,30 @@ responses:
     ]
 }
 ```
+
+## GET /insights
+
+```
+summary: 하나의 인사이트를 가져옵니다.
+requestQuery:
+  user: number
+    description: 사용자의 고유 아이디입니다
+responses:
+  200:
+    schema:
+      type: object
+      properties:
+        id: number
+        content: string
+        code: string
+        img: string
+```
+
+```
+{
+    "id": 14,
+    "content": "저번 달에 비해<br />이번 달은 조금 우울해 보여요<br />창문을 열고 바깥 공기를 마셔볼까요?",
+    "code": "BBAA",
+    "img": ""
+}
+```
