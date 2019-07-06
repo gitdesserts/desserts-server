@@ -15,7 +15,7 @@ export const create = async (req: Request, res: Response) => {
       creator: 1,
       score
     });
-    res.status(200).send({ result });
+    res.status(200).send(result);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }

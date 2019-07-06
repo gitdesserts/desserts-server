@@ -90,17 +90,14 @@ responses:
     schema:
       type: object
       properties:
-        results:
-          type: object
-          properties:
-            id:
-              type: number
-            score:
-              type: number
-            creator:
-              type: number
-            createAt:
-              type: string
+        id:
+          type: number
+        score:
+          type: number
+        creator:
+          type: number
+        createAt:
+          type: string
 
 ```
 
@@ -121,11 +118,9 @@ responses:
 
 ```
 {
-    "result": {
-        "creator": 1,
-        "score": 2,
-        "id": 1,
-        "createAt": "2019-07-06T07:58:06.000Z"
-    }
+    "creator": 1,
+    "score": 2,
+    "id": 1,
+    "createAt": "2019-07-06T07:58:06.000Z"
 }
 ```
