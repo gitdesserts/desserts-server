@@ -173,7 +173,7 @@ responses:
       type: object
       properties:
         month: number
-        week: number
+        year: number
         results: array
           items:
             type: number
@@ -183,7 +183,7 @@ responses:
 // example: GET /results/month?date=2019-07-06
 {
     "month": 7,
-    "week": 1,
+    "year": 2019,
     "result": [
         -1,
         -1,

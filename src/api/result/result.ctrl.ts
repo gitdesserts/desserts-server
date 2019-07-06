@@ -7,6 +7,11 @@ const getMonthAndWeek = async (date: string) =>
     SELECT FLOOR((DATE_FORMAT('${date}','%d')+(date_format(date_format('${date}','%Y%m%01'),'%w')-1))/7)+1 week, month('${date}') month;
   `))[0];
 
+const getYearAndMonth = async (date: string) =>
+  (await getConnection().query(`
+    SELECT YEAR('${date}') year, month('${date}') month;
+    `))[0];
+
 const getLastDay = async (date: string) =>
   (await getConnection().query(`
 SELECT (DATE_FORMAT(LAST_DAY('${date}'), '%e')) as lastDay`))[0];
@@ -54,7 +59,7 @@ export const findFromWeek = async (req: Request, res: Response) => {
 
 export const findAllFromMonth = async (req: Request, res: Response) => {
   const { date } = req.query;
-  const { month, week } = await getMonthAndWeek(date);
+  const { month, year } = await getYearAndMonth(date);
   const result = [];
 
   const rawResults = await getConnection().query(`
@@ -64,12 +69,12 @@ export const findAllFromMonth = async (req: Request, res: Response) => {
 
   rawResults.forEach(rawResult => {
     const index = parseInt(rawResult['day']);
-    result[index-1] = parseInt(rawResult['score']);
+    result[index - 1] = parseInt(rawResult['score']);
   });
 
   for (let index = 0; index < parseInt(lastDay); index++) {
     if (!result[index]) result[index] = -1;
   }
 
-  res.send({ month: parseInt(month), week, result });
+  res.send({ month: parseInt(month), year: parseInt(year), result });
 };
