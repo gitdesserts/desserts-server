@@ -1,9 +1,10 @@
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import { createConnection } from 'typeorm';
-import * as entities from './entity';
+import entities from './entity';
 import { User } from './entity/User';
 import user from './api/user';
+import question from './api/question';
 
 dotenv.config();
 
@@ -17,8 +18,8 @@ createConnection({
   host: DB_HOST,
   database: DB_NAME,
   logging: true,
-  entities: [User],
-  dropSchema: false
+  synchronize: true,
+  entities: entities
 }).then(async () => {
   const app: express.Application = express();
 
@@ -27,6 +28,7 @@ createConnection({
   });
 
   app.use('/', user);
+  app.use('/questions', question);
 
   //app.use('/dosc', swaggerDoc);
 
