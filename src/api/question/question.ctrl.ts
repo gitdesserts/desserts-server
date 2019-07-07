@@ -14,7 +14,6 @@ const getQuestion = async (type: number, limit: number) =>
     FROM question, type
     WHERE question.type=type.id
       AND question.type=${type}
-      ${type === POSITIVE ? `AND content LIKE '%<br>%'` : ''}
     ORDER BY RAND() LIMIT ${limit}`
   );
 
